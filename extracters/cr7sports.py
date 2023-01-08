@@ -17,18 +17,3 @@ def get_link(url):
     lis = json.loads(expand)
     m3u8 = "".join(lis)
     return m3u8
-
-site = "vikistream.com"
-
-
-
-
-
-
-# Find the script tag that contains the fid and src values
-
-# Extract the fid value
-#print(fid)  # Output: 'do32'
-
-# Extract the src value
-#print(src)  # Output: '//vikistream.com/embed2.js'
