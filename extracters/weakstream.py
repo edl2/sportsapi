@@ -17,7 +17,4 @@ def get_link(url: str) -> str:
         r_hls = requests.get(base_url + "/gethls.php?idgstream=%s" % quote(re_vidgstream, safe=""), headers={"User-Agent": user_agent, "Referer": url, "X-Requested-With": "XMLHttpRequest"}).text
     json_hls = json.loads(r_hls)
     m3u8 = json_hls["rawUrl"]
-    if m3u8 == None:
-        raise "no link found"
-    else:
-        return m3u8
+    return m3u8
