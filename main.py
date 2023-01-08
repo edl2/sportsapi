@@ -55,6 +55,7 @@ def print_channel_list(channels, watch_urls, scrapers):
 
 
 
+
 def get_selected_channel(channels, watch_urls):
     selected = int(input("Enter the number of the channel you want to watch: "))
     return watch_urls[selected-1]
@@ -70,7 +71,7 @@ name, id = get_selected_match(matches)
 channels, watch_urls = get_channels(id, sport)
 
 print(f"Channels for {name}:")
-scrapers = ["weakstream.org", "fabtech.work", "allsportsdaily.co", "techclips.net", "gameshdlive.xyz", "enjoy4hd.site", "motornews.live", "cr7sports.us", "com.methstreams.site"]
+scrapers = ["weakstream.org", "fabtech.work", "allsportsdaily.co", "techclips.net", "gameshdlive.xyz", "enjoy4hd.site", "motornews.live", "cr7sports.us", "com.methstreams.site", "1stream.eu"]
 print_channel_list(channels, watch_urls, scrapers)
 url = get_selected_channel(channels, watch_urls)
 site = urlparse(url).netloc
@@ -93,6 +94,8 @@ elif site == "cr7sports.us":
     site = "vikistream.com"
 elif site == "com.methstreams.site":
     from extracters.methstreams import *
+elif site == "1stream.eu":
+    from extracters.onestream import *
 
 m3u8 = get_link(url)
 mpv = subprocess.Popen(["mpv", f"{m3u8}", f"--http-header-fields=Referer: http://{site}/"])
