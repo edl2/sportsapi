@@ -3,6 +3,7 @@ import json
 import datetime
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+import subprocess
 
 def get_current_date():
     return datetime.datetime.today().strftime("%Y-%m-%d")
@@ -69,17 +70,21 @@ name, id = get_selected_match(matches)
 channels, watch_urls = get_channels(id, sport)
 
 print(f"Channels for {name}:")
-scrapers = ["weakstream.org", "fabtech.work"]
+scrapers = ["weakstream.org", "fabtech.work", "allsportsdaily.co", "techclips.net", "gameshdlive.xyz"]
 print_channel_list(channels, watch_urls, scrapers)
 url = get_selected_channel(channels, watch_urls)
 site = urlparse(url).netloc
 if site == "weakstream.org":
     from extracters.weakstream import *
-elif site =="fabtech.work":
+elif site == "fabtech.work":
     from extracters.fabtech import *
-
+elif site == "allsportsdaily.co":
+    from extracters.allsportsdaily import *
+elif site == "techclips.net":
+    from extracters.techclips import *
+elif site == "gameshdlive.xyz":
+    from extracters.gameshdlive import *
 m3u8 = get_link(url)
 mpv = subprocess.Popen(["mpv", f"{m3u8}", f"--http-header-fields=Referer: http://{site}/"])
 mpv.wait()
 mpv.kill()
-
