@@ -1,7 +1,6 @@
 import requests
 import re
 from bs4 import BeautifulSoup
-import subprocess
 def get_link(url):
     r = requests.get(url).text
     soup = BeautifulSoup(r, 'html.parser')
