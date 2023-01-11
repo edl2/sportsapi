@@ -1,12 +1,7 @@
 import requests
 import re
 import subprocess
-#url ="https://eplayer.click/premiumtv/poscitech.php?id=11"
-#def get_link(url):
-#    r = requests.get(url, headers={'referer': "https://poscitech.com/"}).text
-#    
-#    return r
-#print(get_link(url))
+
 url = "http://maxsports.site/fb-epl/"
 def get_link(url):
     r = requests.get(url).text
