@@ -1,6 +1,5 @@
 import re
 import requests
-import subprocess
 from bs4 import BeautifulSoup
 import json
 def get_link(url):

@@ -1,6 +1,5 @@
 import requests
 import re
-import subprocess
 
 url = "http://maxsports.site/fb-epl/"
 def get_link(url):

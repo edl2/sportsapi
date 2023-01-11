@@ -1,5 +1,4 @@
 import re
-import subprocess
 import requests
 
 def get_link(url):
