@@ -71,7 +71,7 @@ name, id = get_selected_match(matches)
 channels, watch_urls = get_channels(id, sport)
 
 print(f"Channels for {name}:")
-scrapers = ["weakstream.org", "fabtech.work", "allsportsdaily.co", "techclips.net", "gameshdlive.xyz", "enjoy4hd.site", "motornews.live", "cr7sports.us", "com.methstreams.site", "1stream.eu"]
+scrapers = ["weakstream.org", "fabtech.work", "allsportsdaily.co", "techclips.net", "gameshdlive.xyz", "enjoy4hd.site", "motornews.live", "cr7sports.us", "com.methstreams.site", "1stream.eu", "maxsports.site", "www.techstips.info"]
 print_channel_list(channels, watch_urls, scrapers)
 url = get_selected_channel(channels, watch_urls)
 site = urlparse(url).netloc
@@ -79,7 +79,7 @@ if site == "weakstream.org":
     from extracters.weakstream import *
 elif site == "fabtech.work":
     from extracters.fabtech import *
-elif site == "allsportsdaily.co":
+elif site == "allsportsdaily.co" or site == "maxsports.site":
     from extracters.allsportsdaily import *
 elif site == "techclips.net":
     from extracters.techclips import *
@@ -96,7 +96,9 @@ elif site == "com.methstreams.site":
     from extracters.methstreams import *
 elif site == "1stream.eu":
     from extracters.onestream import *
-
+elif site == "www.techstips.info":
+    from extracters.techstips import *
+    site = "https://streamservicehd.click/"
 m3u8 = get_link(url)
 mpv = subprocess.Popen(["mpv", f"{m3u8}", f"--http-header-fields=Referer: http://{site}/"])
 mpv.wait()
