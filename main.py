@@ -91,7 +91,7 @@ elif site == "motornews.live":
     from extracters.motornews import *
 elif site == "cr7sports.us":
     from extracters.cr7sports import *
-    site = "vikistream.com"
+    site = "nstream.to"
 elif site == "com.methstreams.site":
     from extracters.methstreams import *
 elif site == "1stream.eu":
